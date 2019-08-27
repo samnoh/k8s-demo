@@ -1,0 +1,26 @@
+{
+    "name": "worker",
+    "version": "1.0.0",
+    "description": "Redis Worker",
+    "main": "build/index.js",
+    "scripts": {
+        "dev": "tsc-watch --onSuccess \"node build/index.js\"",
+        "start": "npm run build && node build/index.js",
+        "build": "npm run clean && tsc",
+        "clean": "rm -rf build"
+    },
+    "keywords": [
+        "Redis"
+    ],
+    "author": "samnoh",
+    "license": "MIT",
+    "dependencies": {
+        "redis": "^2.8.0"
+    },
+    "devDependencies": {
+        "@types/node": "^12.7.2",
+        "@types/redis": "^2.8.13",
+        "tsc-watch": "^2.4.0",
+        "typescript": "^3.5.3"
+    }
+}
