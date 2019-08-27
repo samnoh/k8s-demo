@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: client-deployment
+    name: server-deployment
 spec:
-    selector: # define a set of pods to control
+    selector:
         matchLabels:
-            component: web
-    replicas: 3 # create [number] pods
+            component: server
+    replicas: 3
     template:
         metadata:
             labels:
-                component: web
+                component: server
         spec:
             containers:
-                - name: client
-                  image: samnoh/multi-client
+                - name: server
+                  image: samnoh/multi-server
                   resources:
                       requests:
                           cpu: 50m
@@ -23,4 +23,4 @@ spec:
                           cpu: 100m
                           memory: 150Mi
                   ports:
-                      - containerPort: 3000
+                      - containerPort: 5000
