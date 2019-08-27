@@ -18,14 +18,14 @@ kubectl get pvc
 
 ```bash
 kubectl apply -f test.yaml
-kubecll apply -f k8s/
+kubecll apply -f k8s
 ```
 
 -   Delete Config
 
 ```bash
 kubectl delete deployments test-deploy.yaml
-kubectl delete -f k8s/
+kubectl delete -f k8s
 kubectl delete secrets aws_access_key
 ```
 
