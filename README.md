@@ -130,10 +130,16 @@ spec:
 ```yaml
 spec:
     containers:
-        volumeMounts:
-            - name: postgres-storage
-              mountPath: /var/lib/postgresql/data
-              subPath: postgres
+        - name: mysql
+          image: mysql
+          volumeMounts:
+              - name: site-data
+                mountPath: /var/lib/mysql
+                subPath: mysql
+    volumes:
+        - name: site-data
+          persistentVolumeClaim:
+          claimName: example-pv-cliam
 ```
 
 ### Secrets
