@@ -12,6 +12,6 @@ docker push samnoh/multi-worker:$SHA
 
 kubectl apply -f k8s
 
-kubectl set image deployments/client-deployment sever=samnoh/multi-client:$SHA
-kubectl set image deployments/server-deployment sever=samnoh/multi-server:$SHA
-kubectl set image deployments/worker-deployment sever=samnoh/multi-worker:$SHA
+kubectl set image deployments/client-deployment client=samnoh/multi-client:$SHA
+kubectl set image deployments/server-deployment server=samnoh/multi-server:$SHA
+kubectl set image deployments/worker-deployment worker=samnoh/multi-worker:$SHA
