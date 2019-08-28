@@ -7,7 +7,7 @@
 -   Read
 
 ```bash
-kubectl get pods
+kubectl get po # pods
 kubectl get deploy # deployments
 kubectl get svc # serivces
 kubectl get secrets
@@ -125,16 +125,30 @@ spec:
           targetPort: 8080
 ```
 
-####Ingress
+#### Ingress
 
 -   Exposes a set of services to the outside world
 
 -   [`nginx ingress`](https://kubernetes.github.io/ingress-nginx/)
 
-```bash
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml
-```
-
-```bash
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud-generic.yaml
+```yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+    name: ingress-service
+    annotations:
+        kuberneties.io/ingress.class: nginx
+        nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+    rules:
+        - http:
+              paths:
+                  - path: /api/?(.*)
+                    backend:
+                        serviceName: back-cluster-ip
+                        servicePort: 5000
+                  - path: /?(.*)
+                    backend:
+                        serviceName: front-cluster-ip
+                        servicePort: 8080
 ```
