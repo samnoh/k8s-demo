@@ -1,6 +1,6 @@
 docker build -t samnoh/multi-client:latest -t samnoh/multi-client:$SHA -f ./client/Dockerfile ./client
 docker build -t samnoh/multi-server:latest -t samnoh/multi-server:$SHA -f ./server/Dockerfile ./server
-docker build -t samnoh/multi-worker:latest -t samnoh/multi-worker:$SHA -f ./client/Dockerfile ./worker
+docker build -t samnoh/multi-worker:latest -t samnoh/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 
 docker push samnoh/multi-client:latest
 docker push samnoh/multi-server:latest
