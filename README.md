@@ -29,7 +29,9 @@ kubectl delete -f k8s
 kubectl delete secrets aws_access_key
 ```
 
-### Deployments - Controllers
+### Controllers
+
+#### Deployment
 
 -   A deployment controller provides declarative updates for Pods and ReplicaSets
 
