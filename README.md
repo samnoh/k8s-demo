@@ -58,53 +58,6 @@ spec:
                       - containerPort: 8080
 ```
 
-### Persistent Volume Claim
-
--   PVCs are requests for resources (PV) in the cluster and also act as claim checks to the resource
-
-```yaml
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-    name: example-pv-claim
-spec:
-    accessModes:
-        - ReadWriteOnce # for at least one Node
-    resources:
-        requests:
-            storage: 3Gi # at least three gibibytes that can provide R/W access
-```
-
--   Create an object that uses the PVC as a volume
-
-```yaml
-spec:
-    containers:
-        volumeMounts:
-            - name: postgres-storage
-              mountPath: /var/lib/postgresql/data
-              subPath: postgres
-```
-
-### Secrets
-
--   Create secrets
-
-```bash
-kubectl create secret generic <secret_name> --from-literal <key>=<value>
-```
-
--   Using secrets as environment variables
-
-```yaml
-env:
-    - name: PASSWORD
-      valueFrom:
-          secretKeyRef:
-              name: password
-              key: PASSWORD
-```
-
 ### Services
 
 #### ClusterIP
@@ -151,4 +104,51 @@ spec:
                     backend:
                         serviceName: front-cluster-ip
                         servicePort: 8080
+```
+
+### Persistent Volume Claim
+
+-   PVCs are requests for resources (PV) in the cluster and also act as claim checks to the resource
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: example-pv-claim
+spec:
+    accessModes:
+        - ReadWriteOnce # for at least one Node
+    resources:
+        requests:
+            storage: 3Gi # at least three gibibytes that can provide R/W access
+```
+
+-   Create an object that uses the PVC as a volume
+
+```yaml
+spec:
+    containers:
+        volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+              subPath: postgres
+```
+
+### Secrets
+
+-   Create secrets
+
+```bash
+kubectl create secret generic <secret_name> --from-literal <key>=<value>
+```
+
+-   Using secrets as environment variables
+
+```yaml
+env:
+    - name: PASSWORD
+      valueFrom:
+          secretKeyRef:
+              name: password
+              key: PASSWORD
 ```
