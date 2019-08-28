@@ -10,6 +10,12 @@ export const client = new Pool({
     port: pgPort
 });
 
-client.on('error', () => console.log('Lost PG connection'));
+client.on('error', err => {
+    console.error('Unexpected error on client', err);
+    process.exit(1);
+});
 
-client.query('CREATE TABLE IF NOT EXISTS values (number INT)').catch(err => console.log(err));
+client.query('CREATE TABLE IF NOT EXISTS values (number INT)').catch(err => {
+    console.error('Unexpected error on client', err);
+    process.exit(1);
+});
