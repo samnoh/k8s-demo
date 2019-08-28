@@ -8,7 +8,7 @@ const router = express.Router();
 router.post('/values', async (req, res) => {
     const { index } = req.body;
 
-    if (parseInt(index) > 40) {
+    if (parseInt(index) > 50) {
         return res.status(422).send('Index too high');
     }
 
