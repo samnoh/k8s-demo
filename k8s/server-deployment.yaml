@@ -35,10 +35,10 @@ spec:
                                 key: PGPASSWORD
                   resources:
                       requests:
-                          cpu: 50m
-                          memory: 100Mi
-                      limits:
                           cpu: 100m
                           memory: 150Mi
+                      limits:
+                          cpu: 150m
+                          memory: 200Mi
                   ports:
                       - containerPort: 5000
