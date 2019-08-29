@@ -160,3 +160,30 @@ env:
               name: password
               key: PASSWORD
 ```
+
+### Skaffold
+
+-   `skaffold.yaml`
+
+```yaml
+apiVersion: skaffold/v1beta13
+kind: Config
+build:
+    local:
+        push: false # local development only
+    artifacts:
+        - image: example/frontend # image name
+          context: frontend # path
+          docker:
+              dockerfile: Dockerfile.dev # specify dockerfile name
+deploy:
+    kubectl:
+        manifests:
+            - k8s/*.yaml
+```
+
+-   Run dev mode
+
+```bash
+skaffold dev
+```

@@ -15,7 +15,7 @@ spec:
             containers:
                 - name: worker
                   image: samnoh/multi-worker
-                  imagePullPolicy: Never
+                  imagePullPolicy: IfNotPresent
                   env:
                       - name: REDIS_HOST
                         value: redis-cluster-ip-service
