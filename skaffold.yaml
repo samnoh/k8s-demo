@@ -1,0 +1,34 @@
+apiVersion: skaffold/v1beta13
+kind: Config
+build:
+    local:
+        push: false
+    artifacts:
+        - image: samnoh/mutli-client
+          context: client
+          docker:
+              dockerfile: Dockerfile.dev
+          sync:
+              manual:
+                  - src: "src/**/*.js"
+                    dest: "."
+        - image: samnoh/mutli-server
+          context: server
+          docker:
+              dockerfile: Dockerfile.dev
+          sync:
+              manual:
+                  - src: "src/**/*.js"
+                    dest: "."
+        - image: samnoh/mutli-worker
+          context: worker
+          docker:
+              dockerfile: Dockerfile.dev
+          sync:
+              manual:
+                  - src: "src/**/*.ts"
+                    dest: "."
+deploy:
+    kubectl:
+        manifests:
+            - k8s/*.yaml
