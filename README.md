@@ -170,6 +170,7 @@ env:
 
 ### Skaffold
 
+-   CLI for CI/CD pipeline
 -   [Skaffold Docs](https://skaffold.dev/docs/references/yaml/)
 -   Install
 
