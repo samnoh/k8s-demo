@@ -87,7 +87,7 @@ spec:
 -   [`NIGNX Ingress Controller`](https://kubernetes.github.io/ingress-nginx/)
 -   Install
 
-```yaml
+```bash
 helm install stable/nginx-ingress --name my-nginx # no RBAC (dev only)
 ```
 
