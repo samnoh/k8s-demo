@@ -80,11 +80,18 @@ spec:
           targetPort: 8080
 ```
 
-#### Ingress
+#### Ingress - nginx ingress
 
 -   Exposes a set of services to the outside world
 
--   [`nginx ingress`](https://kubernetes.github.io/ingress-nginx/)
+-   [`NIGNX Ingress Controller`](https://kubernetes.github.io/ingress-nginx/)
+-   Install
+
+```yaml
+helm install stable/nginx-ingress --name my-nginx # no RBAC (dev only)
+```
+
+-   Ingress config
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -162,6 +169,13 @@ env:
 ```
 
 ### Skaffold
+
+-   [Skaffold Docs](https://skaffold.dev/docs/references/yaml/)
+-   Install
+
+```bash
+brew install skaffold # MacOS only
+```
 
 -   `skaffold.yaml`
 
